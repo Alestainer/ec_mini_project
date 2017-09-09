@@ -27,10 +27,12 @@ class Evolution():
 
 
 # Run one step of mutation
-
+	def mutate(self):
+		self.population = self.mutation_operator(self.population)
 
 # Run one step of selection
-
+	def select(self):
+		self.population = self.selection_operator(self.population)
 
 # Work the evolution process
 	def work(self):
@@ -39,6 +41,7 @@ class Evolution():
 			
 			self.mutate()
 			self.select()
+			self.step += 1
 
 			if self.step % 1000 = 0:
 				print ("Step #" + str(self.step))
@@ -46,5 +49,7 @@ class Evolution():
 
 
 # Show the best population
+	def get_best(self, num):
+		return sorted(self.population, key = self.metric)[:num]
 
 
