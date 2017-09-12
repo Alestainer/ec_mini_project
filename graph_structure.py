@@ -19,14 +19,8 @@ class Graph():
 		
 		self.size = size
 
-		matrix = np.zeros(shape = [size, size])
-		for i in range(size ** 2):
-			if i / size == i % size:
-				matrix[i / size][i / size] = 0
-			elif numpy.random.binomial(1, connectivity):
-				matrix[i / size][i % size] = .5
-
-		self.matrix = matrix
+		self.matrix = np.random.binomial(1, connectivity, size = (size, size))
+	
 
 	def drop_vertex(self, index):
 		
