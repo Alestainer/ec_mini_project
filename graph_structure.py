@@ -28,4 +28,6 @@ class Graph():
 
 		self.matrix = matrix
 
-	
+	def drop(self, index):
+		self.matrix = np.delete(self.matrix, index, axis = 0)
+		self.matrix = np.delete(self.matrix, index, axis = 1)
