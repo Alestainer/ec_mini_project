@@ -28,6 +28,17 @@ class Graph():
 
 		self.matrix = matrix
 
-	def drop(self, index):
+	def drop_vertex(self, index):
+		
 		self.matrix = np.delete(self.matrix, index, axis = 0)
 		self.matrix = np.delete(self.matrix, index, axis = 1)
+		self.size -= 1
+
+
+	def add_vertex(self):
+		
+		vector = np.random.binomial(1, connectivity, self.size) * .5
+		vector_2 = np.append(vector, [0])
+		
+		self.matrix = np.vstack((self.matrix, vector))
+		self.matrix = np.column_stack((self.matrix, vector_2))
