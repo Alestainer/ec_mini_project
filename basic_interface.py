@@ -52,4 +52,8 @@ class Evolution():
 	def get_best(self, num):
 		return sorted(self.population, key = self.metric)[:num]
 
+	def get_population(self):
+		return self.population
+	
+
 
