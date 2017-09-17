@@ -12,7 +12,7 @@ class Evolution():
 	 specie,
 	 mutation_operator,
 	 selection_operator,
-	 num_steps = None):
+	 num_steps = None, initial_population = None):
 		
 		self.env = env
 		self.metric = metric
@@ -23,7 +23,9 @@ class Evolution():
 		self.num_steps = num_steps
 
 		self.step = 0
-		self.population = self.random_select(num_species, specie)
+		self.population = initial_population
+		if initial_population is None:
+			self.population = self.random_select(num_species, specie)
 
 
 # Run one step of mutation
