@@ -8,12 +8,12 @@ def geometric_mean(x, y):
 
 	return ((x*y)/(x+y))
 
-def function(x):
+def objective_function(x):
 
 	return np.sin(x) * x - np.cos(2 * x / 3 - 1) * x - np.exp(np.absolute(x / 10))
 
 def mutation_1(population, epsilon):
-	best = selection_1(population, 10, metric_1)
+	best = selection_1(population, 10, objective_function)
 
 	for i in best:
 		for j in best:
@@ -24,16 +24,10 @@ def mutation_1(population, epsilon):
 
 def selection_1(population, num, metric):
 	
-	new = np.argsort(metric_1(population))
+	new = np.argsort(objective_function(population))
 	result = population[new][::-1]
 
-	return result[:num]
-
-def metric_1(x):
-
-	return function(x)
-
-
+	return result[:num], result[0], result[-1]
 
 
 if __name__ == "__main__":
@@ -42,7 +36,7 @@ if __name__ == "__main__":
 	
 	for i in range(10):
 
-		population = selection_1(population, 10, metric = metric_1)
-		population = mutation_1(population, epsilon = 0.5)
+		population, _, _ = selection_1(population, 10, metric = objective_function)
+		population = mutation_1(population, epsilon = 2.5)
 	
-	print (metric_1(selection_1(population, 1, metric_1)))
+	print (objective_function(selection_1(population, 1, objective_function)[0]))
