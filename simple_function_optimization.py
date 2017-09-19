@@ -26,7 +26,6 @@ def selection_1(population, num, metric):
 	
 	new = np.argsort(metric_1(population))
 	result = population[new][::-1]
-	print (result)
 
 	return result[:num]
 
