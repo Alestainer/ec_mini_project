@@ -1,4 +1,4 @@
-# ec_mini_project
+# Political system as an evolving network
 ICS 674 Mini-project
 
 This project was initially created for the 2017 Evolutionary Computation class.
